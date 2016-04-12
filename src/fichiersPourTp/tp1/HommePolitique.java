@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  *
- * @author beetix
+ * @author beetix & lm
  */
 public class HommePolitique implements Comparable<HommePolitique>, Cloneable {
     
