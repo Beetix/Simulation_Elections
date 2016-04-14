@@ -1,4 +1,4 @@
-package fichiersPourTp.tp1;
+package tp1;
 
 public enum Civilite {
 	HOMME, FEMME

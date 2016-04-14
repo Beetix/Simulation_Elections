@@ -1,4 +1,4 @@
-package fichiersPourTp.tp1;
+package travail.tp1;
 
 public class CandidatScrutin{
         private HommePolitique hpolitique;
@@ -95,6 +95,5 @@ public class CandidatScrutin{
                         return false;
                 return true;
         }
-
                 
 }
