@@ -5,29 +5,29 @@
  */
 package travail.tp2;
 
+import correction.tp1.HommePolitique;
+
 /**
  *
  * @author user
  */
-public class BulletinPapier extends AbstractVote implements CheckSigneBulletin{
+public class BulletinPapier extends AbstractVote implements CheckSigneBulletin {
+
+    private boolean signature;
     
-    
-    public boolean estInvalide(Scrutin scrutin){
-        return scrutin.getDateScrutin() < dateBulletin;
+    public BulletinPapier(HommePolitique hommePolitique, int dateBulletin, int dateScrutin, boolean signature) {
+        super(hommePolitique, dateBulletin, dateScrutin);
+        this.signature = signature;
     }
+    
 
     @Override
     public boolean estInvalide() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getDate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return !checkSigne();
     }
 
     @Override
     public boolean checkSigne() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return signature;
     }
 }

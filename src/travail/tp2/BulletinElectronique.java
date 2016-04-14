@@ -5,28 +5,27 @@
  */
 package travail.tp2;
 
+import correction.tp1.HommePolitique;
+
 /**
  *
  * @author user
  */
 public class BulletinElectronique extends AbstractVote implements CheckDateBulletin{
+
+    public BulletinElectronique(HommePolitique hommePolitique, int dateBulletin, int dateScrutin) {
+        super(hommePolitique, dateBulletin, dateScrutin);
+    }
     
-    
-        
     
     @Override
     public boolean estInvalide(){
-        return false;
+        return checkDate();
     }
 
     @Override
     public boolean checkDate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getDate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (dateScrutin - 2) >= dateBulletin;
     }
     
 }

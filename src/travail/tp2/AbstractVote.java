@@ -14,27 +14,28 @@ import correction.tp1.HommePolitique;
 public abstract class AbstractVote implements Vote {
 
     protected int dateBulletin;
-    protected HommePolitique hommePolitique;
+    protected int dateScrutin;
     
-    public int getDateBulletin() {
+    protected HommePolitique hommePolitique;
+
+    public AbstractVote(HommePolitique hommePolitique, int dateBulletin, int dateScrutin) {
+        this.dateBulletin = dateBulletin;
+        this.dateScrutin = dateScrutin;
+        this.hommePolitique = hommePolitique;
+    }
+    
+    @Override
+    public int getDate() {
         return dateBulletin;
     }
-
 
     public HommePolitique getHommePolitique() {
         return hommePolitique;
     }
-
-
     
-    public abstract boolean estInvalide();
-
-
-   
-    
-    
-    
-     public String toString(){
+    @Override
+    public String toString()
+    {
          String validite;
          if (estInvalide())
          {
@@ -44,12 +45,9 @@ public abstract class AbstractVote implements Vote {
          {
              validite = "valide";
          }
-         return "Vote par : "+ getClass().getSimpleName() +" pour [ civilite= " + getHommePolitique().getCivilite() +" ; nom =" + getHommePolitique().getNom() + " ; parti= " + getHommePolitique().getParti() +" ] -> " + validite;
+         return "Vote par : "+ getClass().getSimpleName() +" pour [ civilite= " + getHommePolitique().getCivilite() +" ; nom =" + getHommePolitique().getNom() + " ; parti= " + getHommePolitique().getParti() +" ] -> " + validite + "\n";
      }
      
+    public abstract boolean estInvalide();
      
-     
-     public static void main(String[] args) {
-        BulletinCourrier b1,b2;
-    }
 }

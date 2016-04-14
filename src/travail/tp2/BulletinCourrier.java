@@ -5,6 +5,8 @@
  */
 package travail.tp2;
 
+import correction.tp1.HommePolitique;
+
 /**
  *
  * @author user
@@ -12,36 +14,24 @@ package travail.tp2;
 public class BulletinCourrier extends AbstractVote implements CheckDateBulletin,CheckSigneBulletin{
     
     private boolean signature;
-    
-   
-    
-    public boolean estInvalide(Scrutin scrutin){
-        return scrutin.getDateScrutin() < dateBulletin;
-    }
-    
-    public static void main(String[] args) {
-        BulletinCourrier b1, b2;
-        b1=new BulletinCourrier();
-        
+
+    public BulletinCourrier(HommePolitique hommePolitique, int dateBulletin, int dateScrutin, boolean signature) {
+        super(hommePolitique, dateBulletin, dateScrutin);
+        this.signature = signature;
     }
 
     @Override
     public boolean estInvalide() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getDate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return !(checkDate() && checkSigne());
     }
 
     @Override
     public boolean checkDate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dateScrutin >= dateBulletin;
     }
 
     @Override
     public boolean checkSigne() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return signature;
     }
 }
