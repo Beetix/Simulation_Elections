@@ -1,22 +1,31 @@
 package travail.tp1;
 
-public class CandidatScrutin{
+public class CandidatScrutin implements Comparable<CandidatScrutin>{
         private HommePolitique hpolitique;
         private int nvoix;
         private int dscrutin;
         
         public CandidatScrutin(HommePolitique h,int date){
-                this.hpolitique=new HommePolitique(h.getCivilite(),h.getNom(),h.getParti());
+                this.hpolitique=(HommePolitique)h.clone();
                 this.nvoix=0;
                 this.dscrutin=date;
         }
         
         /**
-         * @return the hpolitique
+         * @return civilite
          */
-        public HommePolitique getHpolitique() {
-                return hpolitique;
+        public Civilite getCivilite() {
+                return hpolitique.getCivilite();
         }
+        
+        public String getNom() {
+            return hpolitique.getNom();
+        }
+
+        public String getParti() {
+            return hpolitique.getParti();
+        }
+
         /**
          * @param hpolitique the hpolitique to set
          */
@@ -29,12 +38,7 @@ public class CandidatScrutin{
         public int getNvoix() {
                 return nvoix;
         }
-        /**
-         * @param nvoix the nvoix to set
-         */
-        public void setNvoix(int nvoix) {
-                this.nvoix = nvoix;
-        }
+       
         /**
          * @return the dscrutin
          */
@@ -48,6 +52,21 @@ public class CandidatScrutin{
                 this.dscrutin = dscrutin;
         }
         
+        
+        public boolean checkAttributsHommePolitique(HommePolitique h){
+            if (h.getCivilite()!=this.getCivilite()){
+                return false;
+            }
+            if (h.getNom()!=this.getNom()){
+                return false;
+            }
+            if (h.getParti()!=this.getParti()){
+                return false;
+            }
+            return true;
+        }
+        
+       
         
         /* (non-Javadoc)
          * @see java.lang.Object#toString()
@@ -95,5 +114,33 @@ public class CandidatScrutin{
                         return false;
                 return true;
         }
+                
+        
+        public static void main(String[] args) {
+        
+             HommePolitique h1, h2, h3;
+        h1 = new HommePolitique(Civilite.FEMME,"nom1","parti1");
+        h3 = new HommePolitique(Civilite.HOMME,"nom3","parti3");
+        
+        CandidatScrutin cs1, cs2;
+        cs1 = new CandidatScrutin(h1, 212016);
+        cs2 = new CandidatScrutin(h3, 212016);    
+           
+            System.out.println(cs1);
+            
+        System.out.println("cs1 et hp3 sont les mêmes : "+cs1.checkAttributsHommePolitique(h3));
+        
+        
+    }
+
+    @Override
+    public int compareTo(CandidatScrutin o) {
+        
+        return hpolitique.compareTo(new HommePolitique(o.getCivilite(),o.getNom(),o.getParti()));
+        
+    }
+                
+                
+                
                 
 }
