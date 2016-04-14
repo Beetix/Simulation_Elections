@@ -1,6 +1,6 @@
 package travail.tp2;
 
-import tp1.HommePolitique;
+import correction.tp1.HommePolitique;
 
 /**
  * @author francoise.perrin

@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import tp1.Civilite;
-import tp1.HommePolitique;
+import correction.tp1.Civilite;
+import correction.tp1.HommePolitique;
 
 
 
