@@ -1,13 +1,13 @@
-package tp1;
+package correction.tp1;
 
 /**
  * @author francoise.perrin
- * Inspiration MOOC sur Coursera "Introduction à la POO (en Java)"
- * by Jamila Sam, Jean-Cédric Chappelier - EPFL 
+ * Inspiration MOOC sur Coursera "Introduction ï¿½ la POO (en Java)"
+ * by Jamila Sam, Jean-Cï¿½dric Chappelier - EPFL 
  */
 
 /**
- * Les candidats à l'élection 
+ * Les candidats ï¿½ l'ï¿½lection 
  */
 public class CandidatScrutin implements Comparable<CandidatScrutin>{
 
@@ -25,8 +25,8 @@ public class CandidatScrutin implements Comparable<CandidatScrutin>{
 	}
 
 	/**
-	 * Vérifie que les attributs de l'HommePolitique passé en paramètres sont ceux 
-	 * les mêmes que ceux de la donnée interne
+	 * Vï¿½rifie que les attributs de l'HommePolitique passï¿½ en paramï¿½tres sont ceux 
+	 * les mï¿½mes que ceux de la donnï¿½e interne
 	 */
 	public boolean containsHommePolitique(HommePolitique hommePolitique) {
 		return this.hommePolitique.equals(hommePolitique);    		
@@ -40,14 +40,14 @@ public class CandidatScrutin implements Comparable<CandidatScrutin>{
 	} 
 
 	/**
-	 * @return the civilité de l'HommePolitique enveloppé
+	 * @return the civilitï¿½ de l'HommePolitique enveloppï¿½
 	 */
 	public  Civilite getCivilite() {
 		return this.hommePolitique.getCivilite();
 	}
 
 	/**
-	 * @return the nom de l'HommePolitique enveloppé
+	 * @return the nom de l'HommePolitique enveloppï¿½
 	 */
 
 	public  String getNom() {
@@ -55,7 +55,7 @@ public class CandidatScrutin implements Comparable<CandidatScrutin>{
 	}
 
 	/**
-	 * @return the parti de l'HommePolitique enveloppé
+	 * @return the parti de l'HommePolitique enveloppï¿½
 	 */
 
 	public  String getParti() {
@@ -83,7 +83,7 @@ public class CandidatScrutin implements Comparable<CandidatScrutin>{
 		return "[hommePolitique = " + hommePolitique + ", nbVoix = "
 				+ getNbVoix() + ", date scrutin = "	+ getDateScrutin() + "]";
 		 */
-		return "[[civilité = " + getCivilite() + ", nom = " + getNom() + ", parti = " + getParti() + "]" 
+		return "[[civilitï¿½ = " + getCivilite() + ", nom = " + getNom() + ", parti = " + getParti() + "]" 
 		+ ", nbVoix = "	+ getNbVoix() + ", date scrutin = "	+ getDateScrutin() + "]";
 
 	}

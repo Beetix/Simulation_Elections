@@ -1,4 +1,4 @@
-package tp1.unitTest;
+package correction.tp1.unitTest;
 
 
 import static org.junit.Assert.assertEquals;
@@ -16,8 +16,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import tp1.Civilite;
-import tp1.HommePolitique;
+import correction.tp1.Civilite;
+import correction.tp1.HommePolitique;
 
 /**
  * @author francoise.perrin
@@ -43,8 +43,8 @@ public class HommePolitiqueTest {
 
 	@Test
 	public void HommePolitique() {
-		assertNotNull("L'instance est créée", h1);
-		assertNotNull("L'instance est créée", h3);
+		assertNotNull("L'instance est crï¿½ï¿½e", h1);
+		assertNotNull("L'instance est crï¿½ï¿½e", h3);
 	}
 
 	@Test
@@ -100,13 +100,13 @@ public class HommePolitiqueTest {
 	@Test
 	public void testclone() {		
 		h2 = (HommePolitique) h1.clone();
-		assertTrue("Est ce que h2 equals h1 après clone", h2.equals(h1));
+		assertTrue("Est ce que h2 equals h1 aprï¿½s clone", h2.equals(h1));
 		assertNotSame("Est ce que h2 == h1", h2, h1);
 	}
 	@Test
 	public void ToString() {		
 		System.out.println("Test toString() " + h1);
-		assertEquals("Test toString() ", h1.toString(),"[civilité = FEMME, nom = nom1, parti = parti1]");
+		assertEquals("Test toString() ", h1.toString(),"[civilitï¿½ = FEMME, nom = nom1, parti = parti1]");
 	}
 	@Test
 	public void compareTo() {		

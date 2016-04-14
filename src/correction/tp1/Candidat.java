@@ -1,15 +1,15 @@
-package tp1;
+package correction.tp1;
 
 /**
  * @author francoise.perrin
- * Inspiration MOOC sur Coursera "Introduction à la POO (en Java)"
- * by Jamila Sam, Jean-Cédric Chappelier - EPFL 
+ * Inspiration MOOC sur Coursera "Introduction ï¿½ la POO (en Java)"
+ * by Jamila Sam, Jean-Cï¿½dric Chappelier - EPFL 
  */
 
 
 /**
- * Vue sur un candidatScrutin ne donnant l'accès que en lecture 
- * aux données privées d'un candidat
+ * Vue sur un candidatScrutin ne donnant l'accï¿½s que en lecture 
+ * aux donnï¿½es privï¿½es d'un candidat
  */
 public class Candidat implements Comparable<Candidat>{
 
@@ -56,7 +56,7 @@ public class Candidat implements Comparable<Candidat>{
 		ret +=  ", Scrutin du ";
 		ret +=  this.getDateScrutin();
 		ret += String.format(" -> %2.1f", this.getPourCentVoix());
-		ret +="% des électeurs]";
+		ret +="% des ï¿½lecteurs]";
 		return ret;
 	}
 

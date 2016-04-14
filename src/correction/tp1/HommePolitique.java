@@ -1,10 +1,10 @@
-package tp1;
+package correction.tp1;
 
 
 /**
  * @author francoise.perrin
- * Inspiration MOOC sur Coursera "Introduction à la POO (en Java)"
- * by Jamila Sam, Jean-Cédric Chappelier - EPFL 
+ * Inspiration MOOC sur Coursera "Introduction ï¿½ la POO (en Java)"
+ * by Jamila Sam, Jean-Cï¿½dric Chappelier - EPFL 
  */
 
 public class HommePolitique implements Comparable<HommePolitique>, Cloneable {
@@ -56,7 +56,7 @@ public class HommePolitique implements Comparable<HommePolitique>, Cloneable {
 	 */
 	public void setNom(String nom) {
 		if (nom == null) {
-			throw new IllegalArgumentException("la propriété nom ne peut pas être null");
+			throw new IllegalArgumentException("la propriï¿½tï¿½ nom ne peut pas ï¿½tre null");
 		}
 		this.nom = nom;
 	}
@@ -123,7 +123,7 @@ public class HommePolitique implements Comparable<HommePolitique>, Cloneable {
 	public int compareTo(HommePolitique o) {
 		int comp = 0;
 		if ((o != null)) {
-			// algo riqué : reprendre celui de equals serait prudent
+			// algo riquï¿½ : reprendre celui de equals serait prudent
 			comp = this.civilite.compareTo(o.civilite) + this.nom.compareTo(o.nom) + this.parti.compareTo(o.parti);
 		}
 		else
@@ -134,7 +134,7 @@ public class HommePolitique implements Comparable<HommePolitique>, Cloneable {
 	@Override
 	public String toString() {
 		//return "HommePolitique [nom=" + nom + ", parti=" + parti + "]";
-		return "[civilité = " + civilite + ", nom = " + nom + ", parti = " + parti + "]";
+		return "[civilitï¿½ = " + civilite + ", nom = " + nom + ", parti = " + parti + "]";
 	}
  
     @Override
