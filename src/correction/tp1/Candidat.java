@@ -56,7 +56,7 @@ public class Candidat implements Comparable<Candidat>{
 		ret +=  ", Scrutin du ";
 		ret +=  this.getDateScrutin();
 		ret += String.format(" -> %2.1f", this.getPourCentVoix());
-		ret +="% des �lecteurs]";
+		ret +="% des électeurs]";
 		return ret;
 	}
 

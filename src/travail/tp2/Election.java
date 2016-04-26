@@ -7,12 +7,14 @@ package travail.tp2;
  */
 
 
+import correction.tp1.Candidat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import correction.tp1.Civilite;
 import correction.tp1.HommePolitique;
+import java.util.ListIterator;
 
 
 
@@ -72,8 +74,18 @@ public class Election {
 		scrutin.countTheVotes();
 		// Affichage r�sultat brut du scrutin
 		System.out.println(scrutin);
+                
+                List<Candidat> lc1 = scrutin.getResultatScrutin();
+                lc1.sort(new ComparateurCandidat());
+                afficheListe(lc1);
+               
 	}
 
+        private static void afficheListe(List<Candidat> liste)
+        {
+             for (ListIterator ite = liste.listIterator(); ite.hasNext(); )
+                    System.out.println(ite.next());
+        }
 
 	private static Scrutin simulerVotes(List< HommePolitique> hommePolitiques, int votants,
 			int dateSrutin, int dateBulletin, int population) {

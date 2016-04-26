@@ -14,7 +14,7 @@ public class Candidat implements Comparable<Candidat>{
     
     @Override
     public String toString() {
-        return "Candidat{" + "cscrutin=" + cScrutin + ", pvoix=" + pVoix + '}';
+        return cScrutin + " a eu "+ pVoix * 100 + " % des voix";
     }
 
     @Override

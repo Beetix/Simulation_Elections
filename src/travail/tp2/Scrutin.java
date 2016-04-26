@@ -5,10 +5,13 @@
  */
 package travail.tp2;
 
+import correction.tp1.Candidat;
 import correction.tp1.CandidatScrutin;
 import correction.tp1.HommePolitique;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  *
@@ -78,6 +81,20 @@ public class Scrutin {
                             
             }
         }
+    }
+    
+    public List getResultatScrutin()
+    {
+        ArrayList<Candidat> resultatScrutin = new ArrayList<>();
+        Candidat candidat;
+        
+        for(CandidatScrutin candidatScrutin : candidats)
+        {
+            candidat = new Candidat(candidatScrutin, getNbVotesValides());
+            resultatScrutin.add(candidat);
+        }
+        
+        return resultatScrutin;
     }
     
     public double tauxParticipation()
