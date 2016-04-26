@@ -205,8 +205,9 @@ public class Election {
                 
                 
                 Set<Civilite> monSet = new TreeSet(set2);
-                //monSet.add(Civilite.INCONNU);
+                monSet.add(Civilite.FEMME);
                 monSet.add(Civilite.HOMME);
+                System.out.println(monSet);
                 
                 
 	}
