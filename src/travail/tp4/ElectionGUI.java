@@ -6,7 +6,11 @@
 package travail.tp4;
 
 import java.awt.BorderLayout;
+import static java.awt.BorderLayout.WEST;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,6 +19,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import static javax.swing.SwingConstants.CENTER;
+import static javax.swing.SwingConstants.WEST;
 
 /**
  *
@@ -37,11 +42,18 @@ public class ElectionGUI extends JFrame {
         JMenu menuResultats = new JMenu("Résultats élection");
         JMenuItem itemApresSimu = new JMenuItem("Après simulation");
         JMenuItem itemApresGestionScrutin = new JMenuItem("Après gestion d'un scrutin");
+        JMenuItem itemExit = new JMenuItem(new AbstractAction("Exit"){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
         
-        itemApresSimu.addActionListener(null);
+        itemApresSimu.addActionListener(new ElectionActionListener());
         
         menuResultats.add(itemApresSimu);
         menuResultats.add(itemApresGestionScrutin);
+        menuResultats.add(itemExit);
         
         barreMenu.add(menuResultats);
         // Sous menu Préférences
@@ -90,6 +102,23 @@ public class ElectionGUI extends JFrame {
         ElectionGUI testElectionGUI = new ElectionGUI();
     }
     
+    class ElectionActionListener implements ActionListener {
+    public void actionPerformed(ActionEvent e) {
+    System.out.println("Selected: " + e.getActionCommand());
+        System.out.println("On fait nos calculs ... ");
+        
+        JLabel candidatsGauche = new JLabel(new ImageIcon("ressources/gif/felixCat.gif"), CENTER);
+        getContentPane().removeAll();
+        JPanel panel = (JPanel) getContentPane();
+        panel.setBackground(null);
+        panel.add(candidatsGauche, BorderLayout.CENTER);
+        
+        setLocationRelativeTo(null);
+        setVisible(true);
+        
+  }
 }
 
-class
+    
+}
+
