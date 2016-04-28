@@ -120,12 +120,12 @@ public class Election {
                 afficheListe(lc2);
                 
                 List<Candidat> lc3=new ArrayList<>(lc1);
-                for (ListIterator<Candidat> ite = lc1.listIterator(); ite.hasNext(); )
+                for (ListIterator<Candidat> ite = lc3.listIterator(); ite.hasNext(); )
                 {
                     Candidat c = ite.next();
                     if(c.getPourCentVoix() <20)
                     {
-                        lc3.remove(c);
+                        ite.remove();
                     }
                 }
                 
@@ -156,8 +156,8 @@ public class Election {
                 List<Candidat> lc4 = scrutin.getResultatScrutin();
                 Map<Civilite,List<String>> map1 = new TreeMap<>();
                 
-                List<String> lh = new ArrayList<String>();
-                List<String> lf = new ArrayList<String>();
+                List<String> lh = new ArrayList<>();
+                List<String> lf = new ArrayList<>();
                 
                 map1.put(Civilite.HOMME, lh);
                 map1.put(Civilite.FEMME, lf);
@@ -207,6 +207,16 @@ public class Election {
                 Set<Civilite> monSet = new TreeSet(set2);
                 monSet.add(Civilite.FEMME);
                 monSet.add(Civilite.HOMME);
+                System.out.println("Set");
+                System.out.println(monSet);
+                
+                Set<Civilite> monSetInverse = ((TreeSet) monSet).descendingSet();
+                System.out.println("Set inversé");
+                System.out.println(monSetInverse);
+                
+                monSetInverse.remove(Civilite.HOMME);
+                
+                System.out.println("Verification suppression HOMME");
                 System.out.println(monSet);
                 
                 
