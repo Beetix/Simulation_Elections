@@ -37,6 +37,8 @@ public class ElectionGUI extends JFrame {
         lancer();
     }
     
+    
+    
     private void lancer()
     {
         // Barre de menus
