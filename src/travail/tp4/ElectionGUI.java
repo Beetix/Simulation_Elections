@@ -5,9 +5,11 @@
  */
 package travail.tp4;
 
+import com.sun.java.swing.plaf.motif.MotifBorders;
 import java.awt.BorderLayout;
 import static java.awt.BorderLayout.WEST;
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.AbstractAction;
@@ -20,6 +22,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import static javax.swing.SwingConstants.CENTER;
 import static javax.swing.SwingConstants.WEST;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -103,21 +107,53 @@ public class ElectionGUI extends JFrame {
     }
     
     class ElectionActionListener implements ActionListener {
-    public void actionPerformed(ActionEvent e) {
-    System.out.println("Selected: " + e.getActionCommand());
-        System.out.println("On fait nos calculs ... ");
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            afficheResultats();
+        }
+    }
+    
+    private void afficheResultats()
+    {
+        JPanel panneauPrincipal = (JPanel) getContentPane();
         
-        JLabel candidatsGauche = new JLabel(new ImageIcon("ressources/gif/felixCat.gif"), CENTER);
-        getContentPane().removeAll();
-        JPanel panel = (JPanel) getContentPane();
-        panel.setBackground(null);
-        panel.add(candidatsGauche, BorderLayout.CENTER);
+        // On enlève tout
+        panneauPrincipal.removeAll();
+        panneauPrincipal.setBackground(null);
         
-        setLocationRelativeTo(null);
-        setVisible(true);
+        // Panneau Ouest
+        JPanel panneauOuest = new JPanel();
+        panneauOuest.setBackground(Color.yellow);
+        panneauOuest.setBorder(new LineBorder(Color.cyan));
         
-  }
-}
+        // Label panneau Ouest
+        JLabel labelOuest = new JLabel("Ouest");
+        panneauOuest.add(labelOuest);
+
+        // Panneau Central
+        JPanel panneauCentral = new JPanel(new GridLayout(2,2));
+        panneauCentral.setBackground(Color.red);
+        panneauCentral.setBorder(new LineBorder(Color.white));
+        
+        // Labels panneau Central
+        JLabel labelCentral1 = new JLabel("Centre 1");
+        JLabel labelCentral2 = new JLabel("Centre 2");
+        JLabel labelCentral3 = new JLabel("Centre 3");
+        JLabel labelCentral4 = new JLabel("Centre 4");
+        
+        panneauCentral.add(labelCentral1);
+        panneauCentral.add(labelCentral2);     
+        panneauCentral.add(labelCentral3);
+        panneauCentral.add(labelCentral4);
+        
+        // Ajout dans le panneau principal
+        panneauPrincipal.setLayout(new BorderLayout());
+        panneauPrincipal.add(panneauOuest, BorderLayout.WEST);
+        panneauPrincipal.add(panneauCentral, BorderLayout.CENTER);
+        
+        setContentPane(panneauPrincipal);
+        
+    }
 
     
 }
