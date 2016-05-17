@@ -98,9 +98,9 @@ public class Election {
 		hommePolitiques.add(new HommePolitique(Civilite.FEMME,"Angel Anerckjel", "Parti4"));
 		hommePolitiques.add(new HommePolitique(Civilite.FEMME,"Anne SanSoossi", "Parti5"));
 
-		String[] tab = {"bugsBunny.gif", "fantome.gif", "schtroumpfs.gif","sorciere.gif", "cricket.gif"};
+		String[] tab = {"bunny.gif", "fantome.gif", "schtroumpfs.gif","sorciere.gif", "cricket.gif"};
 		File g=new File("");
-		String imagePath = g.getAbsolutePath()+"\\images\\";
+		String imagePath = "ressources/gif/";
 		for (int i = 0; i< tab.length; i++){
 			String imageName = imagePath + tab[i];
 			imageHommePolitique.add(imageName);

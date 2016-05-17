@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -24,6 +25,9 @@ import static javax.swing.SwingConstants.CENTER;
 import static javax.swing.SwingConstants.WEST;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import correction.tp1.Candidat;
+import java.util.Map;
+import javax.swing.Box;
 
 /**
  *
@@ -31,6 +35,7 @@ import javax.swing.border.LineBorder;
  */
 public class ElectionGUI extends JFrame {
     
+    private List<Candidat> listcandidats;
     private Election election;	
     private String imageAccueil;
     
@@ -41,8 +46,7 @@ public class ElectionGUI extends JFrame {
     }
 
     public ElectionGUI(String rsultat_des_lections, Election election, String imageAccueil) {
-       super(rsultat_des_lections);
-       election.simulation(DisplayOrder.PARTI);
+        this.election=election;
        lancer();
     }
     
@@ -78,6 +82,9 @@ public class ElectionGUI extends JFrame {
         JMenu menuOrdreAffichage = new JMenu("Ordre d'affichage des résultats");        
         JMenuItem itemOrdreAlphabetique = new JMenuItem("Par ordre alphabétique");
         JMenuItem itemOrdreResultat = new JMenuItem("Par ordre décroissant des résultats");
+        
+        itemOrdreAlphabetique.addActionListener(new DisplayAlphaOrderListener());
+        itemOrdreResultat.addActionListener(new DisplayResultatOrderListener());
         
         menuOrdreAffichage.add(itemOrdreAlphabetique);
         menuOrdreAffichage.add(itemOrdreResultat);
@@ -116,15 +123,69 @@ public class ElectionGUI extends JFrame {
     public static void main(String[] args) {
         ElectionGUI testElectionGUI = new ElectionGUI();
     }
+
+    class DisplayAlphaOrderListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            listcandidats = election.sortCandidats(DisplayOrder.ALPHA);
+            
+            afficheResultats(listcandidats);
+        }
+    }
+    
+    class DisplayResultatOrderListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            listcandidats = election.sortCandidats(DisplayOrder.POURCENT);
+            
+            afficheResultats(listcandidats);
+        }
+    }
     
     class ElectionActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            afficheResultats();
+            listcandidats = election.simulation(DisplayOrder.PARTI);
+            
+            afficheResultats(listcandidats);
         }
     }
     
-    private void afficheResultats()
+    private JPanel remplirWestPannel(List<Candidat> listecandidats, Map<Candidat, String> candidatimage, int datescrutin )
+    {
+        // Panneau Ouest
+        JPanel panneauOuest = new JPanel(new BorderLayout());
+        panneauOuest.setBackground(Color.yellow);
+        panneauOuest.setBorder(new LineBorder(Color.cyan));
+        
+        // Label panneau Ouest
+        JLabel labelOuest = new JLabel("Resultat du scrutin du "+datescrutin);
+        panneauOuest.add(labelOuest, BorderLayout.NORTH);
+        Box boxcandidats = Box.createVerticalBox();
+        for(Candidat candidat : listecandidats)
+        {
+            Box item = Box.createHorizontalBox();
+            JLabel imageItem = new JLabel(new ImageIcon(candidatimage.get(candidat)), CENTER);
+            item.add(imageItem);
+            Box infos = Box.createVerticalBox();
+            JLabel civ = new JLabel(candidat.getCivilite() + "");
+            JLabel nom = new JLabel(candidat.getNom());
+            JLabel parti = new JLabel(candidat.getParti());
+            JLabel voix = new JLabel(candidat.getPourCentVoix()+ " % des voix");
+            infos.add(civ);
+            infos.add(nom);
+            infos.add(parti);
+            infos.add(voix);
+            item.add(infos);
+            boxcandidats.add(item);
+        }
+        panneauOuest.add(boxcandidats, BorderLayout.CENTER);
+        return panneauOuest;
+    }
+    
+    
+    
+    private void afficheResultats(List<Candidat> listcandidats)
     {
         JPanel panneauPrincipal = (JPanel) getContentPane();
         
@@ -132,14 +193,7 @@ public class ElectionGUI extends JFrame {
         panneauPrincipal.removeAll();
         panneauPrincipal.setBackground(null);
         
-        // Panneau Ouest
-        JPanel panneauOuest = new JPanel();
-        panneauOuest.setBackground(Color.yellow);
-        panneauOuest.setBorder(new LineBorder(Color.cyan));
-        
-        // Label panneau Ouest
-        JLabel labelOuest = new JLabel("Ouest");
-        panneauOuest.add(labelOuest);
+        JPanel panneauOuest=remplirWestPannel(listcandidats, election.newMapCandidatImage(), election.getDateSrutin());
 
         // Panneau Central
         JPanel panneauCentral = new JPanel(new GridLayout(2,2));
