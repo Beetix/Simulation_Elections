@@ -27,10 +27,19 @@ import static javax.swing.SwingConstants.WEST;
  */
 public class ElectionGUI extends JFrame {
     
+    private Election election;	
+    private String imageAccueil;
+    
     public ElectionGUI()
     {
         super("Résultat des élections");
         lancer();
+    }
+
+    public ElectionGUI(String rsultat_des_lections, Election election, String imageAccueil) {
+       super(rsultat_des_lections);
+       election.simulation(DisplayOrder.PARTI);
+       lancer();
     }
     
     
