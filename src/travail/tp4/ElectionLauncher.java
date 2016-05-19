@@ -21,7 +21,7 @@ public class ElectionLauncher {
 	public static void main(String[] args) {
 
 		File g=new File("");
-		String imageAccueil = g.getAbsolutePath()+"\\images\\felixCat.gif" ; // � personnaliser
+		String imageAccueil = g.getAbsolutePath()+"/ressources/gif/felixCat.gif" ; // � personnaliser
 		
 		Election election = new Election();
 		

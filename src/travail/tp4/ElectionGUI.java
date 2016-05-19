@@ -64,17 +64,13 @@ public class ElectionGUI extends JFrame {
     private List<Candidat> listcandidats;
     private Election election;	
     private String imageAccueil;
-    
-    public ElectionGUI()
-    {
-        super("Résultat des élections");
-        imageAccueil = "";
-    }
 
-    public ElectionGUI(String rsultat_des_lections, Election election, String imageAccueil) {
-        this();
+    public ElectionGUI(String titreElections, Election election, String imageAccueil) {
+        super("Résultat des élections");
         this.election=election;
         this.imageAccueil=imageAccueil;
+        
+        lancer();
 
     }
     
@@ -141,8 +137,8 @@ public class ElectionGUI extends JFrame {
         // Felix le chat
         if(!this.imageAccueil.equals(""))
         {
-        JLabel imageAccueilLabel = new JLabel(new ImageIcon(this.imageAccueil), CENTER);
-        panel.add(imageAccueilLabel, BorderLayout.CENTER);
+            JLabel imageAccueilLabel = new JLabel(new ImageIcon(this.imageAccueil), CENTER);
+            panel.add(imageAccueilLabel, BorderLayout.CENTER);
         }
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
