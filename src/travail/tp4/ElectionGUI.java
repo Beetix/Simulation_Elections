@@ -68,12 +68,14 @@ public class ElectionGUI extends JFrame {
     public ElectionGUI()
     {
         super("Résultat des élections");
-        lancer();
+        imageAccueil = "";
     }
 
     public ElectionGUI(String rsultat_des_lections, Election election, String imageAccueil) {
+        this();
         this.election=election;
-       lancer();
+        this.imageAccueil=imageAccueil;
+
     }
     
     
@@ -137,13 +139,12 @@ public class ElectionGUI extends JFrame {
         panel.setBackground(Color.red);
         
         // Felix le chat
-        JLabel imageAccueil = new JLabel(new ImageIcon("ressources/gif/felixCat.gif"), CENTER);
-        panel.add(imageAccueil, BorderLayout.CENTER);
-        
+        if(!this.imageAccueil.equals(""))
+        {
+        JLabel imageAccueilLabel = new JLabel(new ImageIcon(this.imageAccueil), CENTER);
+        panel.add(imageAccueilLabel, BorderLayout.CENTER);
+        }
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 400);
-        setLocationRelativeTo(null);
-        setVisible(true);
     }
 
     private JPanel remplirPourcentagePannel(List<Candidat> listcandidats , int dateScrutin) {
@@ -420,11 +421,7 @@ public class ElectionGUI extends JFrame {
         // Répartition des candidats du scrutin par parti 
         JPanel barreparcivilite =remplirCandidatSexePannel(listcandidats,election.newMapCiviliteCandidats(), election.getDateSrutin());
                 
-        // Labels panneau Central
-        JLabel labelCentral1 = new JLabel("Centre 1");
-        JLabel labelCentral2 = new JLabel("Centre 2");
-        JLabel labelCentral3 = new JLabel("Centre 3");
-        JLabel labelCentral4 = new JLabel("Centre 4");
+        // Panneau Central
         
         panneauCentral.add(pieparpourcentage);
         panneauCentral.add(pieparparti);     
